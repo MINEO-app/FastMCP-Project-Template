@@ -1,0 +1,1 @@
+# FastMCP-Project-Template
