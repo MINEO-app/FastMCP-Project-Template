@@ -1,0 +1,11 @@
+services:
+  mcp-project:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    ports:
+      - "8002:8002"
+    environment:
+      - MCP_PORT=8002
+      - MCP_AUTH_TOKEN=${MCP_AUTH_TOKEN:-default-token}
+    restart: unless-stopped
