@@ -43,7 +43,7 @@ FastMCP-ProjectTemplate/
    python app.py
    ```
 
-The server will start on `http://localhost:8002` by default.
+The server will start on `http://localhost:8000` by default.
 
 ### Using Docker Compose
 
@@ -64,8 +64,15 @@ Environment variables:
 
 | Variable | Description | Default |
 |----------|-------------|---------|
-| `MCP_PORT` | Port for the MCP server | `8002` |
+| `MCP_PORT` | Port for the MCP server | `8000` |
 | `MCP_AUTH_TOKEN` | JWT token for authentication | `default-token` |
+
+### Security
+
+Set a strong `MCP_AUTH_TOKEN` in production:
+```bash
+export MCP_AUTH_TOKEN=$(openssl rand -hex 32)
+```
 
 ### Authentication
 

@@ -2,8 +2,10 @@ import os
 from fastmcp import FastMCP
 from fastmcp.server.auth.providers.jwt import StaticTokenVerifier
 
+from src.tools import add, subtract, multiply
+
 AUTH_TOKEN = os.environ.get("MCP_AUTH_TOKEN", "default-token")
-PORT = int(os.environ.get("MCP_PORT", "8002"))
+PORT = int(os.environ.get("MCP_PORT", "8000"))
 
 verifier = StaticTokenVerifier(
     tokens={AUTH_TOKEN: {"client_id": "mcp-client", "scopes": ["read", "write"]}},
@@ -11,8 +13,6 @@ verifier = StaticTokenVerifier(
 )
 
 mcp = FastMCP("Calculator", auth=verifier)
-
-from src.tools import add, subtract, multiply
 
 for tool in [add, subtract, multiply]:
     mcp.tool()(tool)

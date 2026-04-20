@@ -4,8 +4,8 @@ services:
       context: .
       dockerfile: docker/Dockerfile
     ports:
-      - "8002:8002"
+      - "8000:8000"
     environment:
-      - MCP_PORT=8002
+      - MCP_PORT=8000
       - MCP_AUTH_TOKEN=${MCP_AUTH_TOKEN:-default-token}
     restart: unless-stopped
