@@ -1,13 +1,19 @@
+import logging
 import os
 from fastmcp import FastMCP
 from fastmcp.server.auth.providers.jwt import StaticTokenVerifier
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(message)s",
+)
 
 from src.tools import add, subtract, multiply
 
 AUTH_TOKEN = os.environ.get("MCP_AUTH_TOKEN", "default-token")
 PORT = int(os.environ.get("MCP_PORT", "8000"))
 
-print(f"[I] Using auth token: {AUTH_TOKEN}")
+logging.info(f"***** Using auth token: {AUTH_TOKEN}")
 
 verifier = StaticTokenVerifier(
     tokens={AUTH_TOKEN: {"client_id": "mcp-client", "scopes": ["read", "write"]}},
